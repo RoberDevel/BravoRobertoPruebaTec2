@@ -57,7 +57,7 @@ public class TurnoConCodigoSv extends HttpServlet {
             request.setAttribute("nombre", turno.getUnCiudadano().getNombre());
             request.setAttribute("apellido", turno.getUnCiudadano().getApellido());
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultado2.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Resultado2.jsp");
             dispatcher.forward(request, response);
         } else {
             //si no te reenvia a la pagina errorConCodigo, donde se muestra que el ciudadano con ese codigo no existe

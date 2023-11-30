@@ -59,7 +59,7 @@ public class TurnoSinCodigoSv extends HttpServlet {
             request.setAttribute("nombre", ciudadano.getNombre());
             request.setAttribute("apellido", ciudadano.getApellido());
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Resultado.jsp");
             dispatcher.forward(request, response);
         } else {
             //si no se han creado, significa que el ciudadano existe, con lo cual se te reenviará a la pagina de error mostrándote los datos del ciudadano introducido y el codigo, para poder crear
