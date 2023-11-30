@@ -1,10 +1,9 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Resultado</title>
+        <title>Error</title>
         <link rel="stylesheet" href="css/bootstrap5.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <style>
@@ -14,31 +13,19 @@
                 padding: 0;
             }
             p {
-                font-size: 28px;
+                font-size: 58px;
 
-            }
-            .fechTurn{
-                font-size: 20px;
-            }
-            .fechTurnRes{
-                font-size: 26px;
-                font-weight: bold;
-            }
-            .resaltado {
-                font-weight: bold;
-                font-size: 36px;
-                text-decoration: underline;
             }
         </style>
     </head>
     <body>
-        <div class="row" style="height: 100%; background-color: lightblue">
+        <div class="row" style="height: 100%; background-color: coral">
             <div class="col-4 p-3 text-white bg-dark" style="width: 325px">
                 <h3>Turnero</h3>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="index.jsp" class="nav-link text-white" aria-current="page"><i class="bi bi-house"></i>
+                        <a href="index.jsp" class="nav-link active  text-white" aria-current="page"><i class="bi bi-house"></i>
                             Inicio
                         </a>
                     </li>
@@ -81,31 +68,15 @@
                 </ul>
             </div>
 
+
+
+
             <div class="col-8" >
-                <div class="container">
-                    <h1 style="text-align: center; margin-top: 20px">Gracias <%= request.getAttribute("nombre")%> <%= request.getAttribute("apellido")%>! Su solicitud se ha completado correctamente!</h1>
-                    <br>
-                    <br>
-                    <label class="fechTurn">Fecha de su cita: <span class="fechTurnRes"><%= request.getAttribute("fecha")%></span>  </label>
-                    <hr>
-                    <label class="fechTurn">Turno: <span class="fechTurnRes"><%= request.getAttribute("numero")%></span>  </label>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-                            <p>Su código de usuario es: <span class="resaltado"><%= request.getAttribute("codigo")%></span> </p>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-                            <p>Si desea cambiar el estado del turno el código es: <span class="resaltado"><%= request.getAttribute("id")%></span></p>
-                        </div>
-                    </div>
-                </div>
+                <p style="margin-top: 120px; color: white; text-align: center">Ha habido un error en su solicitud</p>
+                <p style=" color: white; text-align: center; font-size: 32px;">Error: Ciudadano no encontrado</p>
             </div>
-        </div>
+
+
+
     </body>
 </html>

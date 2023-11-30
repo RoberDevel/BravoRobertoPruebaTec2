@@ -1,7 +1,7 @@
 package com.trabajos.gestionturnos.servlets;
 
-import com.trabajos.gestionturnos.logic.entity.Ciudadano;
-import com.trabajos.gestionturnos.logic.entity.Controladora;
+import com.trabajos.gestionturnos.logic.Ciudadano;
+import com.trabajos.gestionturnos.logic.Controladora;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

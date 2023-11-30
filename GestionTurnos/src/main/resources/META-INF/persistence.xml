@@ -2,9 +2,9 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <persistence-unit name="GestionTurnosPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.trabajos.gestionturnos.logic.entity.Ciudadano</class>
-    <class>com.trabajos.gestionturnos.logic.entity.Turno</class>
-    <class>com.trabajos.gestionturnos.logic.entity.Tramite</class>
+    <class>com.trabajos.gestionturnos.logic.Turno</class>
+    <class>com.trabajos.gestionturnos.logic.Ciudadano</class>
+    <class>com.trabajos.gestionturnos.logic.Tramite</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestion_turnos?serverTimezone=UTC"/>

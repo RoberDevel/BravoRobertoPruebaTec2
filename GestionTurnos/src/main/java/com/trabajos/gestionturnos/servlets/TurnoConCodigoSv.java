@@ -1,14 +1,11 @@
 package com.trabajos.gestionturnos.servlets;
 
-import com.trabajos.gestionturnos.logic.entity.Ciudadano;
-import com.trabajos.gestionturnos.logic.entity.Controladora;
-import com.trabajos.gestionturnos.logic.entity.Tramite;
-import com.trabajos.gestionturnos.logic.entity.Turno;
+import com.trabajos.gestionturnos.logic.Controladora;
+import com.trabajos.gestionturnos.logic.Tramite;
+import com.trabajos.gestionturnos.logic.Turno;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +33,6 @@ public class TurnoConCodigoSv extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // processRequest(request, response);
 
         String fechaStr = request.getParameter("fecha");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -46,7 +42,6 @@ public class TurnoConCodigoSv extends HttpServlet {
         turno.setFechaTurno(fecha);
         Tramite tramite = new Tramite();
         tramite.setDescripcion(request.getParameter("tramite"));
-        //  controladora.crearTurno(turno);
 
         String cod = request.getParameter("codigo");
         Long codigo = Long.parseLong(cod);
@@ -54,14 +49,17 @@ public class TurnoConCodigoSv extends HttpServlet {
         if (controladora.crearTurnoConCodigo(codigo, turno, tramite)) {
             request.setAttribute("codigo", turno.getUnCiudadano().getId());
             request.setAttribute("numero", turno.getNumero());
+            request.setAttribute("id", turno.getId());
+            Long num = turno.getId();
+
             request.setAttribute("fecha", turno.getFechaTurno());
             request.setAttribute("nombre", turno.getUnCiudadano().getNombre());
             request.setAttribute("apellido", turno.getUnCiudadano().getApellido());
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Resultado2.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultado2.jsp");
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("errorConCodigo.jsp");
         }
 
     }

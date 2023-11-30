@@ -1,22 +1,16 @@
 package com.trabajos.gestionturnos.servlets;
 
-import com.trabajos.gestionturnos.logic.entity.Controladora;
-import com.trabajos.gestionturnos.logic.entity.Turno;
+import com.trabajos.gestionturnos.logic.Controladora;
+import com.trabajos.gestionturnos.logic.Turno;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author rober
- */
 @WebServlet(name = "ModificacionAtendidoSv", urlPatterns = {"/ModificacionAtendidoSv"})
 public class ModificacionAtendidoSv extends HttpServlet {
 
@@ -34,7 +28,7 @@ public class ModificacionAtendidoSv extends HttpServlet {
         // processRequest(request, response);
 
         Turno turno = controladora.traerTurno(Long.valueOf(request.getParameter("idC")));
-        System.out.println("get esAtendido----> " + turno.isAtendido());
+
         request.setAttribute("turno", turno);
         request.getRequestDispatcher("modificacionAtendido.jsp").forward(request, response);
 
@@ -45,14 +39,12 @@ public class ModificacionAtendidoSv extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
 
-        System.out.println("recibiendo---> " + request.getParameter("atendido"));
-
         Turno turno = controladora.traerTurno(Long.valueOf(request.getParameter("turnoId")));
 
         boolean esAtendido = Boolean.parseBoolean(request.getParameter("atendido"));
-        System.out.println("esAtendido1 --------> " + esAtendido);
+
         esAtendido = !(esAtendido);
-        System.out.println("esAtendido2 --------> " + esAtendido);
+
         turno.setAtendido(esAtendido);
 
         try {

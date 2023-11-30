@@ -1,11 +1,10 @@
 package com.trabajos.gestionturnos.servlets;
 
-import com.trabajos.gestionturnos.logic.entity.Ciudadano;
-import com.trabajos.gestionturnos.logic.entity.Controladora;
-import com.trabajos.gestionturnos.logic.entity.Tramite;
-import com.trabajos.gestionturnos.logic.entity.Turno;
+import com.trabajos.gestionturnos.logic.Ciudadano;
+import com.trabajos.gestionturnos.logic.Controladora;
+import com.trabajos.gestionturnos.logic.Tramite;
+import com.trabajos.gestionturnos.logic.Turno;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.servlet.RequestDispatcher;
@@ -38,18 +37,8 @@ public class TurnoSinCodigoSv extends HttpServlet {
         //  processRequest(request, response);
 
         Ciudadano ciudadano = new Ciudadano();
-        // ciudadano.setNombre("rober");
-        // ciudadano.setApellido("apellidido");
-        // ciudadano.setDni("3333333g");
-        // ciudadano.setTelefono("666666666");
         Turno turno = new Turno();
-        // turno.setNumero(5);
-        // turno.setFechaTurno(LocalDate.now());
-        // turno.setAtendido(true);
-        //  turno.setHoraTurno("10:30");
         Tramite tramite = new Tramite();
-        //  tramite.setDescripcion("tramite 1");
-
         String fechaStr = request.getParameter("fecha");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fecha = LocalDate.parse(fechaStr, formatter);
@@ -59,23 +48,26 @@ public class TurnoSinCodigoSv extends HttpServlet {
         ciudadano.setDni(request.getParameter("dni"));
         turno.setAtendido(false);
         turno.setFechaTurno(fecha);
-        // turno.setHoraTurno("10:30");
         tramite.setDescripcion(request.getParameter("tramite"));
 
-        controladora.crearTurnoSinCodigo(ciudadano, turno, tramite);
-        // controladora.crearCiudadano(ciudadano);
-        // turno.setUnCiudadano(ciudadano);
-        // controladora.crearTramite(tramite);
-        // turno.setUnTramite(tramite);
-        // controladora.crearTurno(turno);
-        request.setAttribute("codigo", ciudadano.getId());
-        request.setAttribute("numero", turno.getNumero());
-        request.setAttribute("fecha", turno.getFechaTurno());
-        request.setAttribute("nombre", ciudadano.getNombre());
-        request.setAttribute("apellido", ciudadano.getApellido());
+        if (controladora.crearTurnoSinCodigo(ciudadano, turno, tramite)) {
+            request.setAttribute("codigo", ciudadano.getId());
+            request.setAttribute("numero", turno.getNumero());
+            request.setAttribute("id", turno.getId());
+            request.setAttribute("fecha", turno.getFechaTurno());
+            request.setAttribute("nombre", ciudadano.getNombre());
+            request.setAttribute("apellido", ciudadano.getApellido());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Resultado.jsp");
-        dispatcher.forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            Ciudadano ciudadano1 = controladora.mostrarIdCiudadano(request.getParameter("nombre"), request.getParameter("apellido"), request.getParameter("dni"));
+            request.setAttribute("ciudadano", ciudadano1);
+            request.getRequestDispatcher("errorSinCodigo.jsp").forward(request, response);
+            // RequestDispatcher dispatcher = request.getRequestDispatcher("errorSinCodigo.jsp");
+            //  dispatcher.forward(request, response);
+        }
+
     }
 
     @Override

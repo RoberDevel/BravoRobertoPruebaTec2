@@ -13,12 +13,10 @@
                 margin: 0;
                 padding: 0;
             }
-
         </style>
     </head>
     <body>
         <div class="row" style="height: 100%;">
-
             <div class="col-4 p-3 text-white bg-dark" style="width: 325px">
                 <h3>Turnero</h3>
                 <hr>
@@ -35,12 +33,12 @@
                             Pedir turno con código de usuario
                         </a>
                         <div id="miMensaje" style="display: none; position: absolute; background-color: #86b7fe; padding: 10px; border: 1px solid #d4d4d4; border-radius: 5px; z-index: 1;">
-                            Necesitas crear un turno sin código de usuario primero
+                            Para obtener el código necesitas pedir un turno sin código de usuario primero
                         </div>
                     </li>
                     <hr>
                     <li>
-                        <a href="pedirTurnoSinCodigo.jsp" class="nav-link text-white" ">
+                        <a href="pedirTurnoSinCodigo.jsp" class="nav-link text-white">
                             <i class="bi bi-plus-square"></i>
 
                             Pedir turno sin código de usuario
@@ -149,12 +147,15 @@
 
                     </div>
                     <!-- Botón que te muestra la pagina de resultado sin necesidad de introducir turno -->
-                    <!-- <a href="Resultado.jsp">
-                        <button type="button" style="margin-top: 20px">Ir a Resultado</button>
-                    </a> -->
+                    <a href="resultado.jsp">
+                        <button type="button" style="margin-top: 20px">Ir a Resultado1</button>
+                    </a>
                     <!-- Botón que te muestra la pagina de resultado2 sin necesidad de introducir turno -->
-                    <a href="Resultado2.jsp">
-                        <button type="button" style="margin-top: 20px">Ir a Resultado</button>
+                    <a href="resultado2.jsp">
+                        <button type="button" style="margin-top: 20px">Ir a Resultado2</button>
+                    </a>
+                    <a href="errorConCodigo.jsp">
+                        <button type="button" style="margin-top: 20px">Ir a error</button>
                     </a>
                 </div>
             </div>
@@ -168,12 +169,9 @@
                                 document.getElementById("miMensaje").style.left = rect.left + "px";
                                 document.getElementById("miMensaje").style.top = rect.bottom + "px";
                             }
-
-
                             function ocultarMensaje() {
                                 document.getElementById("miMensaje").style.display = "none";
                             }
-
         </script>
 
     </body>

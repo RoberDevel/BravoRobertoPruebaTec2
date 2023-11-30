@@ -1,8 +1,8 @@
 package com.trabajos.gestionturnos.persistence;
 
-import com.trabajos.gestionturnos.logic.entity.Ciudadano;
-import com.trabajos.gestionturnos.logic.entity.Tramite;
-import com.trabajos.gestionturnos.logic.entity.Turno;
+import com.trabajos.gestionturnos.logic.Ciudadano;
+import com.trabajos.gestionturnos.logic.Tramite;
+import com.trabajos.gestionturnos.logic.Turno;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class ControladoraPersistencia {
         turnoJpa.edit(turno);
     }
 
-    public void crearTurnoSinCodigo(Ciudadano ciudadano, Turno turno, Tramite tramite) {
+    public boolean crearTurnoSinCodigo(Ciudadano ciudadano, Turno turno, Tramite tramite) {
 
         List<Ciudadano> listaCompro = ciudadanoJpa.findCiudadanoEntities();
         listaCompro = listaCompro.stream()
@@ -60,9 +60,10 @@ public class ControladoraPersistencia {
 
             turno.setNumero(contParsed);
             turnoJpa.create(turno);
-
+            return true;
         } else {
-            System.out.println("---------------->>> Ya existe ese ciudadano, su id es " + listaCompro.get(0).getId());
+
+            return false;
         }
 
     }
@@ -87,11 +88,11 @@ public class ControladoraPersistencia {
 
             return true;
         } else {
+            //falta implementacion en interfaz
             System.out.println("----------------->>>> ciudadano no encontrado");
             return false;
         }
 
-        //ciudadanoJpa.create(ciudadano);
     }
 
     public Ciudadano traerCiudadano(Long id) {
@@ -155,6 +156,18 @@ public class ControladoraPersistencia {
 
     public Ciudadano mostrarCiudadano(Long id) {
         return ciudadanoJpa.findCiudadano(id);
+    }
+
+    public Ciudadano mostrarIdCiudadano(String nombre, String apellido, String dni) {
+        List<Ciudadano> listaCompro = ciudadanoJpa.findCiudadanoEntities();
+        Ciudadano ciudadano;
+        ciudadano = listaCompro.stream()
+                .filter(c -> c.getNombre().equalsIgnoreCase(nombre)
+                && c.getApellido().equalsIgnoreCase(apellido)
+                && c.getDni().equalsIgnoreCase(dni))
+                .findFirst().orElse(null);
+        System.out.println("en controladora-------->" + ciudadano.getNombre());
+        return ciudadano;
     }
 
 }

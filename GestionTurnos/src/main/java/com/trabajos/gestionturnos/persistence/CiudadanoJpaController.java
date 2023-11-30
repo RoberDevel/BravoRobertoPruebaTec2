@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.trabajos.gestionturnos.persistence;
 
-import com.trabajos.gestionturnos.logic.entity.Ciudadano;
+import com.trabajos.gestionturnos.logic.Ciudadano;
 import com.trabajos.gestionturnos.persistence.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -16,10 +12,6 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-/**
- *
- * @author rober
- */
 public class CiudadanoJpaController implements Serializable {
 
     public CiudadanoJpaController(EntityManagerFactory emf) {

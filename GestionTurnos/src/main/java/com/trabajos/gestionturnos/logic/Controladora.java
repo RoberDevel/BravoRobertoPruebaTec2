@@ -1,9 +1,8 @@
-package com.trabajos.gestionturnos.logic.entity;
+package com.trabajos.gestionturnos.logic;
 
 import com.trabajos.gestionturnos.persistence.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Long;
 
 public class Controladora {
 
@@ -21,8 +20,8 @@ public class Controladora {
         controladoraP.crearTramite(tramite);
     }
 
-    public void crearTurnoSinCodigo(Ciudadano ciudadano, Turno turno, Tramite tramite) {
-        controladoraP.crearTurnoSinCodigo(ciudadano, turno, tramite);
+    public boolean crearTurnoSinCodigo(Ciudadano ciudadano, Turno turno, Tramite tramite) {
+        return controladoraP.crearTurnoSinCodigo(ciudadano, turno, tramite);
     }
 
     public boolean crearTurnoConCodigo(Long codigo, Turno turno, Tramite tramite) {
@@ -57,6 +56,10 @@ public class Controladora {
     public Ciudadano mostrarCiudadano(Long id) {
 
         return controladoraP.mostrarCiudadano(id);
+    }
+
+    public Ciudadano mostrarIdCiudadano(String nombre, String apellido, String dni) {
+        return controladoraP.mostrarIdCiudadano(nombre, apellido, dni);
     }
 
 }

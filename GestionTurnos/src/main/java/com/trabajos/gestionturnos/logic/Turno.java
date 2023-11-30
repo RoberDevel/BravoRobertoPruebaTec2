@@ -1,4 +1,4 @@
-package com.trabajos.gestionturnos.logic.entity;
+package com.trabajos.gestionturnos.logic;
 
 import java.io.Serializable;
 import java.time.LocalDate;
