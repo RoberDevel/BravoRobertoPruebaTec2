@@ -147,16 +147,18 @@
 
                     </div>
                     <!-- Botón que te muestra la pagina de resultado sin necesidad de introducir turno -->
-                    <a href="resultado.jsp">
+                    <!-- <a href="resultado.jsp">
                         <button type="button" style="margin-top: 20px">Ir a Resultado1</button>
-                    </a>
+                    </a> -->
+
                     <!-- Botón que te muestra la pagina de resultado2 sin necesidad de introducir turno -->
-                    <a href="resultado2.jsp">
+                    <!-- <a href="resultado2.jsp">
                         <button type="button" style="margin-top: 20px">Ir a Resultado2</button>
-                    </a>
-                    <a href="errorConCodigo.jsp">
-                        <button type="button" style="margin-top: 20px">Ir a error</button>
-                    </a>
+                    </a>-->
+                    <!-- <a href="errorConCodigo.jsp">
+                    <button type="button" style="margin-top: 20px">Ir a error</button>
+                    </a> -->
+
                 </div>
             </div>
         </div>
