@@ -38,17 +38,6 @@ public class FiltrarTurnosPorAtendidosSv extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String[] turnoIdValues = request.getParameterValues("turnoId");
-        for (int i = 0; i < turnoIdValues.length; i++) {
-            String turnoIdValues2 = turnoIdValues[i];
-            System.out.println("id nuevo -> " + turnoIdValues2);
-        }
-        String[] atendidoValues = request.getParameterValues("atendido");
-        for (int i = 0; i < atendidoValues.length; i++) {
-            String atendidoValues1 = atendidoValues[i];
-            System.out.println("atendido nuevo -> " + atendidoValues1);
-        }
-        response.sendRedirect("index.jsp");
     }
 
     @Override

@@ -5,7 +5,10 @@
 <details>
 <summary> <h2 style="display:inline">Comenzando 🚀 </h2></summary>
 
-Crea una bbdd llamada __gestion_turnos.__
+### BBDD
+
+Crea una bbdd llamada __gestion_turnos__, o importa la bbdd ya creada que está dentro de la carpeta 
+_GestionTurnos\src\main\java\com\trabajos\gestionturnos\ **resources**_
 
 ##### Usuario: __"root"__
 ##### Contraseña:  __""__
@@ -42,21 +45,21 @@ La aplicación se basa en la gestión de turnos.
     También se te asignará un código de usuario único para poder pedir de nuevo otro turno.<br>
 
    <h4 style="display:inline">IMPORTANTE </h4><br>
-    Se gestiona la introducción de un ciudadano **ya existente** (nombre, apellido y dni), en cuyo caso se redirigirá a otra página donde se le indicará que ha habido un error y se le mostrará el 
+    Se gestiona la introducción de un ciudadano ya existente (nombre, apellido y dni), en cuyo caso se redirigirá a otra página donde se le indicará que ha habido un error y se le mostrará el 
     código de usuario.
 <br><br>
-**2**. Si ya has pedido un turno, la próxima vez (con los mismos nombre, apellido y dni) sólo podrás pedir un nuevo turno en la sección **Pedir turno sin código de usuario**.
+**2**. Si ya has pedido un turno, la próxima vez (con los mismos nombre, apellido y dni) sólo podrás pedir un nuevo turno en la sección Pedir turno sin código de usuario.
    Una vez pedido el turno, se le redirigirá a una página mostrandose la fecha y el turno de la cita.
 
 <h4 style="display:inline">IMPORTANTE </h4><br>
    Se gestiona la introducción de un código de usuario no existente, en cuyo caso se le redirigirá a una página donde se le 
    indica que ha habido un error por introducir un código de usuario de un ciudadano inexistente.
 <br><br>
-**3**. Tendrá la opción de listar los turnos que hay en una determinada fecha en la sección **Listar turnos por Fecha**.
+**3**. Tendrá la opción de listar los turnos que hay en una determinada fecha en la sección Listar turnos por Fecha.
    <br><br>
-**4**. También podrá filtrar los turnos por fecha y por estado en la sección **Filtrado de turnos**.<br>
+**4**. También podrá filtrar los turnos por fecha y por estado en la sección Filtrado de turnos.<br>
 
-**5**. En la sección **Modificar estado del turno** podrá modificar el estado de _"en espera"_ a _"ya atendido"_ y viceversa proveyendo el código del turno.<br>
+**5**. En la sección Modificar estado del turno podrá modificar el estado de _"en espera"_ a _"ya atendido"_ y viceversa proveyendo el código del turno.<br>
 Si quiere conocer el código del turno, podrá verlo en la sección del punto 3 y 4, en la tabla en la columna llamada cod.
 
 </details>

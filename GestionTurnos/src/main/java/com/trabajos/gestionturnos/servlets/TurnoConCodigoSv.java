@@ -46,6 +46,7 @@ public class TurnoConCodigoSv extends HttpServlet {
         String cod = request.getParameter("codigo");
         Long codigo = Long.parseLong(cod);
 
+        //si existe te reenvia a la pagina resultado2 mostrandote informacion sobre el turno
         if (controladora.crearTurnoConCodigo(codigo, turno, tramite)) {
             request.setAttribute("codigo", turno.getUnCiudadano().getId());
             request.setAttribute("numero", turno.getNumero());
@@ -59,6 +60,7 @@ public class TurnoConCodigoSv extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("resultado2.jsp");
             dispatcher.forward(request, response);
         } else {
+            //si no te reenvia a la pagina errorConCodigo, donde se muestra que el ciudadano con ese codigo no existe
             response.sendRedirect("errorConCodigo.jsp");
         }
 

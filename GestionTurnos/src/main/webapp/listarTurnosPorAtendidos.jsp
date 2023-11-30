@@ -16,7 +16,6 @@
                 margin: 0;
                 padding: 0;
             }
-
         </style>
     </head>
     <body>
@@ -33,16 +32,13 @@
                     <hr>
                     <li>
                         <a href="pedirTurnoConCodigo.jsp" class="nav-link text-white" onmouseover="mostrarMensaje(this)" onmouseout="ocultarMensaje(this)" > <i class="bi bi-plus-circle"></i>
-
                             Pedir turno con código de usuario
                         </a>
-
                     </li>
                     <hr>
                     <li>
                         <a href="pedirTurnoSinCodigo.jsp" class="nav-link text-white ">
                             <i class="bi bi-plus-square"></i>
-
                             Pedir turno sin código de usuario
                         </a>
                     </li>
@@ -98,9 +94,7 @@
                                                 List<Boolean> aten = new ArrayList();
                                                 for (Turno turno : turnos) {
                                                     aten.add(turno.isAtendido());
-
                                                 }
-
                                                 if (turnos != null && !turnos.isEmpty()) {
                                                     out.print(turnos.get(0).getFechaTurno() != null ? turnos.get(0).getFechaTurno() : "No turnos");
                                                 }
@@ -129,7 +123,6 @@
                                     <% } %>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                     <% }%>

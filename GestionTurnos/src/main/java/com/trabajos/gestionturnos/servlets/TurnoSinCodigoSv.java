@@ -50,6 +50,7 @@ public class TurnoSinCodigoSv extends HttpServlet {
         turno.setFechaTurno(fecha);
         tramite.setDescripcion(request.getParameter("tramite"));
 
+        //si se ha creado el ciudadano, tramite y turno, se reenvia a la pagina resultado para mostrar los datos
         if (controladora.crearTurnoSinCodigo(ciudadano, turno, tramite)) {
             request.setAttribute("codigo", ciudadano.getId());
             request.setAttribute("numero", turno.getNumero());
@@ -61,11 +62,12 @@ public class TurnoSinCodigoSv extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
             dispatcher.forward(request, response);
         } else {
+            //si no se han creado, significa que el ciudadano existe, con lo cual se te reenviará a la pagina de error mostrándote los datos del ciudadano introducido y el codigo, para poder crear
+            //el turno con este en la pagina pedirTurnoConCodigo
             Ciudadano ciudadano1 = controladora.mostrarIdCiudadano(request.getParameter("nombre"), request.getParameter("apellido"), request.getParameter("dni"));
             request.setAttribute("ciudadano", ciudadano1);
             request.getRequestDispatcher("errorSinCodigo.jsp").forward(request, response);
-            // RequestDispatcher dispatcher = request.getRequestDispatcher("errorSinCodigo.jsp");
-            //  dispatcher.forward(request, response);
+
         }
 
     }

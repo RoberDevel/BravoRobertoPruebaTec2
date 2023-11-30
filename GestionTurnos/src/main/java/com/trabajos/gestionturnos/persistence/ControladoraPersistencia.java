@@ -38,18 +38,20 @@ public class ControladoraPersistencia {
     public boolean crearTurnoSinCodigo(Ciudadano ciudadano, Turno turno, Tramite tramite) {
 
         List<Ciudadano> listaCompro = ciudadanoJpa.findCiudadanoEntities();
+
+        //uso de stream para obtener el ciudadano que tenga el mismo nombre, apellido y dni introducido en la pagina para crear turno si no tienes codigo
         listaCompro = listaCompro.stream()
                 .filter(c -> c.getNombre().equalsIgnoreCase(ciudadano.getNombre())
                 && c.getApellido().equalsIgnoreCase(ciudadano.getApellido())
                 && c.getDni().equalsIgnoreCase(ciudadano.getDni()))
                 .collect(Collectors.toList());
 
+        //si el ciudadano no existe, crea el turno, ciudadano y tramite
         if (listaCompro.isEmpty()) {
 
             ciudadanoJpa.create(ciudadano);
             turno.setAtendido(false);
             turno.setUnCiudadano(ciudadano);
-            Long ciudadanoId = ciudadano.getId();
             tramiteJpa.create(tramite);
             turno.setUnTramite(tramite);
 
@@ -62,7 +64,7 @@ public class ControladoraPersistencia {
             turnoJpa.create(turno);
             return true;
         } else {
-
+            // si el ciudadano existe, devuelve false, lo que te redirigirá a la pagina de error (TurnoSinCodigoSv -> doPost)
             return false;
         }
 
@@ -71,9 +73,10 @@ public class ControladoraPersistencia {
     public boolean crearTurnoConCodigo(Long codigo, Turno turno, Tramite tramite) {
 
         Ciudadano ciudadano = new Ciudadano();
+        //se comprueba si el ciudadano con el codigo introducido existe
         if (ciudadanoJpa.findCiudadano(codigo) != null) {
             ciudadano = ciudadanoJpa.findCiudadano(codigo);
-
+            //si existe se crea el turno
             turno.setUnCiudadano(ciudadano);
             List<Turno> listaTurnosPorFecha = turnoJpa.findTurnoEntities();
             Long cont = listaTurnosPorFecha.stream().filter(t -> t.getFechaTurno().equals(turno.getFechaTurno())).count();
@@ -88,8 +91,7 @@ public class ControladoraPersistencia {
 
             return true;
         } else {
-            //falta implementacion en interfaz
-            System.out.println("----------------->>>> ciudadano no encontrado");
+            //si no se devuelve falso y se reenvia a la pagina de error (TurnoConCodigoSv -> doPost)
             return false;
         }
 
@@ -133,23 +135,19 @@ public class ControladoraPersistencia {
 
     public void actualizarEstadoAtendido(List<Long> turnoIds, List<Boolean> atendidoValues) {
         try {
-            // Iterar sobre los turnos y actualizar el estado "atendido"
+
             for (int i = 0; i < turnoIds.size(); i++) {
                 Long turnoId = turnoIds.get(i);
                 boolean atendido = atendidoValues.get(i);
 
-                // Obtener el turno de la base de datos
                 Turno turno = turnoJpa.findTurno(turnoId);
 
-                // Actualizar el estado "atendido" del turno
                 if (turno != null) {
                     turno.setAtendido(atendido);
-                    // Llamar al método en el controlador JPA para actualizar el turno
                     turnoJpa.edit(turno);
                 }
             }
         } catch (Exception ex) {
-            // Manejar excepciones (puedes personalizar esto según tus necesidades)
             ex.printStackTrace();
         }
     }
@@ -166,7 +164,7 @@ public class ControladoraPersistencia {
                 && c.getApellido().equalsIgnoreCase(apellido)
                 && c.getDni().equalsIgnoreCase(dni))
                 .findFirst().orElse(null);
-        System.out.println("en controladora-------->" + ciudadano.getNombre());
+
         return ciudadano;
     }
 
