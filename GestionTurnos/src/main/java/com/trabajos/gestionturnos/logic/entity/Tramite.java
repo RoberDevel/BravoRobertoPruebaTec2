@@ -1,4 +1,4 @@
-package com.trabajos.gestionturnos.logic;
+package com.trabajos.gestionturnos.logic.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -12,13 +12,9 @@ import javax.persistence.OneToOne;
 public class Tramite implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String descripcion;
-
-    @OneToOne
-    @JoinColumn(name = "turno_id")
-    private Turno turno;
 
     public Tramite() {
     }
@@ -43,14 +39,6 @@ public class Tramite implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public Turno getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Turno turno) {
-        this.turno = turno;
     }
 
 }

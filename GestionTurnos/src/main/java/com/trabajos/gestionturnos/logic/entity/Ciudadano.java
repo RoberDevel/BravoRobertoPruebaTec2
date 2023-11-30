@@ -1,4 +1,4 @@
-package com.trabajos.gestionturnos.logic;
+package com.trabajos.gestionturnos.logic.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,13 +25,13 @@ public class Ciudadano implements Serializable {
     public Ciudadano() {
     }
 
-    public Ciudadano(String nombre, String apellido, String dni, String telefono, List<Turno> listTurnos) {
+    public Ciudadano(String nombre, String apellido, String dni, String telefono) {
 
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
-        this.listTurnos = listTurnos;
+
     }
 
     public Long getId() {

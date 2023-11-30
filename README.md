@@ -1,2 +1,4 @@
-# BravoRobertoPruebaTec2
-Prueba técnica 2 Hack a Boss
+# Aplicacion gestion de turnos (turnero)
+
+
+### Documentación en el archivo .md llamado documentacion.md

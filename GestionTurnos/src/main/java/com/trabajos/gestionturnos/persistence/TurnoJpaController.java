@@ -4,7 +4,7 @@
  */
 package com.trabajos.gestionturnos.persistence;
 
-import com.trabajos.gestionturnos.logic.Turno;
+import com.trabajos.gestionturnos.logic.entity.Turno;
 import com.trabajos.gestionturnos.persistence.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;

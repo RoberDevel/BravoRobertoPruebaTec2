@@ -1,9 +1,7 @@
-package com.trabajos.gestionturnos.logic;
+package com.trabajos.gestionturnos.logic.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Turno implements Serializable {
@@ -20,28 +16,28 @@ public class Turno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private LocalDate fechaTurno;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaTurno;
-    private String horaTurno;
+    private Integer numero;
     @ManyToOne
     @JoinColumn(name = "ciudadano_id")
     private Ciudadano ciudadano;
 
-    @OneToOne(mappedBy = "turno")
+    @OneToOne
     private Tramite tramite;
     private boolean atendido;
 
     public Turno() {
     }
 
-    public Turno(Date fechaTurno, String horaTurno, Ciudadano unCiudadano, Tramite unTramite, boolean atendido) {
+    public Turno(LocalDate fechaTurno, Ciudadano unCiudadano, Tramite unTramite, boolean atendido) {
 
         this.fechaTurno = fechaTurno;
-        this.horaTurno = horaTurno;
+
         this.ciudadano = unCiudadano;
         this.tramite = unTramite;
         this.atendido = atendido;
+
     }
 
     public Long getId() {
@@ -52,20 +48,20 @@ public class Turno implements Serializable {
         this.id = id;
     }
 
-    public Date getFechaTurno() {
+    public LocalDate getFechaTurno() {
         return fechaTurno;
     }
 
-    public void setFechaTurno(Date fechaTurno) {
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public void setFechaTurno(LocalDate fechaTurno) {
         this.fechaTurno = fechaTurno;
-    }
-
-    public String getHoraTurno() {
-        return horaTurno;
-    }
-
-    public void setHoraTurno(String horaTurno) {
-        this.horaTurno = horaTurno;
     }
 
     public Ciudadano getUnCiudadano() {
